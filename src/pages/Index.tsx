@@ -68,11 +68,9 @@ const Index = () => {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <img 
-                src="https://cdn.poehali.dev/projects/c7034d56-1650-47d4-8d52-409af5db3144/files/152a12a8-09aa-4e32-8d62-029f15144f95.jpg" 
-                alt="МногоСтендов.рф"
-                className="h-12 w-12 object-contain"
-              />
+              <div className="h-12 w-12 rounded-lg bg-primary flex items-center justify-center">
+                <Icon name="LayoutGrid" size={28} className="text-white" />
+              </div>
               <span className="font-heading text-xl font-bold text-secondary">многостендов.рф</span>
             </div>
             <nav className="hidden md:flex items-center gap-8">
