@@ -18,19 +18,19 @@ const Index = () => {
       id: 1,
       title: 'Настенные стенды',
       description: 'Идеально для офисов и помещений. Легкая установка, современный дизайн.',
-      image: 'https://cdn.poehali.dev/projects/c7034d56-1650-47d4-8d52-409af5db3144/files/ceb32560-6c66-4b01-b792-6e262dd39142.jpg'
+      image: 'https://cdn.poehali.dev/files/98579a05-9098-446f-98d1-cd96f436ff53.jpg'
     },
     {
       id: 2,
-      title: 'Уличные конструкции',
-      description: 'Прочные и долговечные. Устойчивы к погодным условиям.',
-      image: 'https://cdn.poehali.dev/projects/c7034d56-1650-47d4-8d52-409af5db3144/files/893eaf40-7cd2-4730-a014-0ecb391444ac.jpg'
+      title: 'Информационные доски',
+      description: 'Многосекционные стенды с возможностью размещения документов и объявлений.',
+      image: 'https://cdn.poehali.dev/files/87fc9f43-f494-4e39-8318-ec7108eac639.png'
     },
     {
       id: 3,
-      title: 'Интерактивные киоски',
-      description: 'Современные решения с подсветкой и мультимедиа.',
-      image: 'https://cdn.poehali.dev/projects/c7034d56-1650-47d4-8d52-409af5db3144/files/dbbfdc46-13de-4caf-a467-3463c3ce7a61.jpg'
+      title: 'Уличные конструкции',
+      description: 'Прочные и долговечные. Устойчивы к погодным условиям.',
+      image: 'https://cdn.poehali.dev/projects/c7034d56-1650-47d4-8d52-409af5db3144/files/893eaf40-7cd2-4730-a014-0ecb391444ac.jpg'
     }
   ];
 
