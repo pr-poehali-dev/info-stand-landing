@@ -130,6 +130,15 @@ const Index = () => {
               <a href="#products" className="text-secondary hover:text-primary transition-colors">Продукция</a>
               <a href="#advantages" className="text-secondary hover:text-primary transition-colors">Преимущества</a>
               <a href="#contacts" className="text-secondary hover:text-primary transition-colors">Контакты</a>
+              <a 
+                href="https://wa.me/79965269483" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-secondary hover:text-primary transition-colors flex items-center gap-2"
+              >
+                <Icon name="MessageCircle" size={18} />
+                WhatsApp
+              </a>
               <Button 
                 size="sm"
                 onClick={() => document.getElementById('order')?.scrollIntoView({ behavior: 'smooth' })}
@@ -170,6 +179,16 @@ const Index = () => {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Контакты
+              </a>
+              <a 
+                href="https://wa.me/79965269483" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-secondary hover:text-primary transition-colors py-2 flex items-center gap-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <Icon name="MessageCircle" size={18} />
+                WhatsApp
               </a>
               <Button 
                 className="w-full"
