@@ -12,6 +12,8 @@ const Index = () => {
     phone: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const products = [
     {
@@ -87,9 +89,32 @@ const Index = () => {
     }
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+    
+    try {
+      const response = await fetch('https://functions.poehali.dev/703cd412-15d0-44b2-b370-dff8f8271320', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+      
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', phone: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -273,12 +298,27 @@ const Index = () => {
                   />
                 </div>
                 
+                {submitStatus === 'success' && (
+                  <div className="bg-green-50 text-green-700 p-4 rounded-lg mb-4 flex items-center gap-2">
+                    <Icon name="CheckCircle" size={20} />
+                    <span>Заявка успешно отправлена! Мы свяжемся с вами в течение рабочего дня.</span>
+                  </div>
+                )}
+                
+                {submitStatus === 'error' && (
+                  <div className="bg-red-50 text-red-700 p-4 rounded-lg mb-4 flex items-center gap-2">
+                    <Icon name="AlertCircle" size={20} />
+                    <span>Ошибка отправки. Попробуйте позже или свяжитесь по телефону.</span>
+                  </div>
+                )}
+                
                 <Button 
                   type="submit" 
                   size="lg" 
                   className="w-full h-12 bg-primary hover:bg-primary/90 text-white text-lg"
+                  disabled={isSubmitting}
                 >
-                  Отправить заявку
+                  {isSubmitting ? 'Отправка...' : 'Отправить заявку'}
                 </Button>
               </form>
             </CardContent>
