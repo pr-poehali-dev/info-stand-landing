@@ -37,6 +37,30 @@ const Index = () => {
       title: 'Стенды из акрила',
       description: 'Прозрачные конструкции из оргстекла. Стильное решение для современных офисов.',
       image: 'https://cdn.poehali.dev/files/6eaba7d5-e8fc-4dd1-a82b-9a97b8babd88.jpg'
+    },
+    {
+      id: 5,
+      title: 'Фотозоны',
+      description: 'Декоративные конструкции для создания уникальных фотозон на мероприятиях.',
+      image: 'https://cdn.poehali.dev/files/91e7009b-f9ee-48d3-b453-5065bc578d85.jpg'
+    },
+    {
+      id: 6,
+      title: 'Панно на подвесной системе',
+      description: 'Композиции из фотографий и изображений с гибкой системой крепления.',
+      image: 'https://cdn.poehali.dev/files/b35c4586-350b-43b7-bdbc-9d6a86020ab4.jpg'
+    },
+    {
+      id: 7,
+      title: 'Интерьерные решения',
+      description: 'Объемные декоративные элементы для оформления офисных пространств.',
+      image: 'https://cdn.poehali.dev/files/99d3a317-9933-423c-9a96-d80668cdbcb9.JPG'
+    },
+    {
+      id: 8,
+      title: 'Интерьерные вывески',
+      description: 'Объемные буквы и логотипы для стильного оформления интерьера.',
+      image: 'https://cdn.poehali.dev/files/a9d22313-900b-40ae-b101-aa0b4c9f156f.jpg'
     }
   ];
 
