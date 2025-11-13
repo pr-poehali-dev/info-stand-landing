@@ -18,7 +18,7 @@ const Index = () => {
       id: 1,
       title: 'Настенные стенды',
       description: 'Идеально для офисов и помещений. Легкая установка, современный дизайн.',
-      image: 'https://cdn.poehali.dev/files/98579a05-9098-446f-98d1-cd96f436ff53.jpg'
+      image: 'НАСТЕННЫЕ_СТЕНДЫ_URL'
     },
     {
       id: 2,
@@ -30,13 +30,13 @@ const Index = () => {
       id: 3,
       title: 'Стенды с подсветкой',
       description: 'Современные стенды со встроенной LED-подсветкой для максимальной видимости.',
-      image: 'https://cdn.poehali.dev/projects/c7034d56-1650-47d4-8d52-409af5db3144/files/91e63211-9634-40b2-9b42-24da5ad3cc73.jpg'
+      image: 'СВЕТОВОЙ_СТЕНД_URL'
     },
     {
       id: 4,
       title: 'Стенды из акрила',
       description: 'Прозрачные конструкции из оргстекла. Стильное решение для современных офисов.',
-      image: 'https://cdn.poehali.dev/projects/c7034d56-1650-47d4-8d52-409af5db3144/files/16ff6fff-8e9d-47e5-9bab-832b71691338.jpg'
+      image: 'АКРИЛ_URL'
     }
   ];
 
@@ -58,7 +58,7 @@ const Index = () => {
     },
     {
       icon: 'Shield',
-      title: 'Гарантия 3 года',
+      title: 'Гарантия до 3 лет',
       description: 'Уверены в надежности каждого изделия'
     }
   ];
@@ -74,11 +74,7 @@ const Index = () => {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <img 
-                src="https://cdn.poehali.dev/projects/c7034d56-1650-47d4-8d52-409af5db3144/files/570bba42-1ce0-4008-a588-0ea5104c0443.jpg" 
-                alt="МногоСтендов.рф"
-                className="h-12 object-contain"
-              />
+              <span className="font-heading text-2xl font-bold text-secondary">многостендов.рф</span>
             </div>
             <nav className="hidden md:flex items-center gap-8">
               <a href="#products" className="text-secondary hover:text-primary transition-colors">Продукция</a>
@@ -187,7 +183,7 @@ const Index = () => {
             Заказать стенд
           </h2>
           <p className="text-center text-muted-foreground mb-12 text-lg">
-            Оставьте заявку, и мы свяжемся с вами в течение часа
+            Оставьте заявку, и мы свяжемся с вами в течение рабочего дня
           </p>
           
           <Card className="shadow-xl border-none">
