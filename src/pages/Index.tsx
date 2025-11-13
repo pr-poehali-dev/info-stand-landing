@@ -139,9 +139,15 @@ const Index = () => {
                   <h3 className="font-heading text-2xl font-semibold mb-3 text-secondary">
                     {product.title}
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed mb-4">
                     {product.description}
                   </p>
+                  <Button 
+                    className="w-full"
+                    onClick={() => document.getElementById('order')?.scrollIntoView({ behavior: 'smooth' })}
+                  >
+                    Узнать цену
+                  </Button>
                 </CardContent>
               </Card>
             ))}
