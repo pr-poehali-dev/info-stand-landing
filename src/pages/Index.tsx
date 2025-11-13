@@ -18,13 +18,13 @@ const Index = () => {
       id: 1,
       title: 'Навигационные стенды и таблички',
       description: 'Идеально для офисов и помещений. Легкая установка, современный дизайн.',
-      image: 'https://cdn.poehali.dev/files/4a506d1c-f913-49ce-b04c-8b9c0fcfc0b9.JPG'
+      image: 'https://cdn.poehali.dev/files/548262f6-0b94-41d6-85f3-17c332689344.jpg'
     },
     {
       id: 2,
       title: 'Информационные доски',
       description: 'Многосекционные стенды с возможностью размещения документов и объявлений.',
-      image: 'https://cdn.poehali.dev/files/1fe6d3c8-17b6-4cfc-b0bb-f1c01d2c2e48.JPG'
+      image: 'https://cdn.poehali.dev/files/8878544e-9097-4d6e-a709-24ae6d159659.jpg'
     },
     {
       id: 3,
@@ -36,7 +36,7 @@ const Index = () => {
       id: 4,
       title: 'Стенды из акрила',
       description: 'Прозрачные конструкции из оргстекла. Стильное решение для современных офисов.',
-      image: 'https://cdn.poehali.dev/files/a6cba43f-b18f-4e6c-8d71-1ff2eb5d1d0e.JPG'
+      image: 'https://cdn.poehali.dev/files/6eaba7d5-e8fc-4dd1-a82b-9a97b8babd88.jpg'
     }
   ];
 
