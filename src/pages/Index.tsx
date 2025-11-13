@@ -257,24 +257,46 @@ const Index = () => {
       </section>
 
       <footer id="contacts" className="bg-secondary text-white py-12 px-6">
-        <div className="container mx-auto text-center">
-          <h3 className="font-heading text-2xl font-bold mb-4">Контакты</h3>
-          <div className="space-y-2 text-white/80">
-            <p className="flex items-center justify-center gap-2">
-              <Icon name="Phone" size={20} />
-              <span>+7 (4162) 22-78-03</span>
-            </p>
-            <p className="flex items-center justify-center gap-2">
-              <Icon name="Mail" size={20} />
-              <span>info@stands.ru</span>
-            </p>
-            <p className="flex items-center justify-center gap-2">
-              <Icon name="MapPin" size={20} />
-              <span>Амурская область, г. Благовещенск, ул. Забурхановская, 98, оф. 4</span>
-            </p>
+        <div className="container mx-auto">
+          <div className="text-center mb-8">
+            <h3 className="font-heading text-2xl font-bold mb-6">Контакты</h3>
+            
+            <div className="space-y-4 text-white/90">
+              <div>
+                <p className="text-sm text-white/60 mb-2">Мессенджеры</p>
+                <div className="flex items-center justify-center gap-6">
+                  <a href="https://wa.me/79965269483" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-primary transition-colors">
+                    <Icon name="MessageCircle" size={20} />
+                    <span>WhatsApp</span>
+                  </a>
+                  <a href="tg://resolve?phone=79965269483" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-primary transition-colors">
+                    <Icon name="Send" size={20} />
+                    <span>Telegram</span>
+                  </a>
+                  <a href="https://maxim.ru" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-primary transition-colors">
+                    <Icon name="MessageSquare" size={20} />
+                    <span>Max</span>
+                  </a>
+                </div>
+                <p className="mt-2 text-white/80">+7 996 526-94-83</p>
+              </div>
+              
+              <p className="flex items-center justify-center gap-2">
+                <Icon name="Mail" size={20} />
+                <a href="mailto:mnogo.info@mail.ru" className="hover:text-primary transition-colors">
+                  mnogo.info@mail.ru
+                </a>
+              </p>
+            </div>
           </div>
-          <div className="mt-8 pt-8 border-t border-white/20 text-white/60">
-            <p>&copy; 2024 Производство информационных стендов. Все права защищены.</p>
+          
+          <div className="mt-8 pt-8 border-t border-white/20 text-white/60 text-center">
+            <p className="mb-3">&copy; 2025 многостендов.рф</p>
+            <div className="flex items-center justify-center gap-6 text-sm">
+              <a href="#" className="hover:text-white transition-colors">Пользовательское соглашение</a>
+              <span>•</span>
+              <a href="#" className="hover:text-white transition-colors">Соглашение на обработку данных</a>
+            </div>
           </div>
         </div>
       </footer>
