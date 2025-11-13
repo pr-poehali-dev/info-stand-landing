@@ -128,11 +128,11 @@ const Index = () => {
                 className="overflow-hidden border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-fade-in flex flex-col"
                 style={{ animationDelay: `${index * 150}ms` }}
               >
-                <div className="aspect-[4/3] overflow-hidden bg-gray-50">
+                <div className="aspect-[4/3] overflow-hidden">
                   <img 
                     src={product.image} 
                     alt={product.title}
-                    className="w-full h-full object-contain hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                   />
                 </div>
                 <CardContent className="p-6 flex flex-col flex-grow">
