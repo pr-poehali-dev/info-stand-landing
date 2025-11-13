@@ -57,11 +57,11 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
                 'isBase64Encoded': False
             }
         
-        smtp_host = os.environ.get('SMTP_HOST', 'smtp.mail.ru')
-        smtp_port = int(os.environ.get('SMTP_PORT', '465'))
-        smtp_user = os.environ.get('SMTP_USER')
-        smtp_password = os.environ.get('SMTP_PASSWORD')
-        email_to = os.environ.get('EMAIL_TO', 'mnogo.info@mail.ru')
+        smtp_host = 'smtp.mail.ru'
+        smtp_port = 587
+        smtp_user = os.environ.get('EMAIL_USER')
+        smtp_password = os.environ.get('EMAIL_PASSWORD')
+        email_to = smtp_user
         
         if not smtp_user or not smtp_password:
             return {
@@ -92,7 +92,8 @@ Email: {email}
         
         msg.attach(MIMEText(body_text, 'plain', 'utf-8'))
         
-        with smtplib.SMTP_SSL(smtp_host, smtp_port) as server:
+        with smtplib.SMTP(smtp_host, smtp_port) as server:
+            server.starttls()
             server.login(smtp_user, smtp_password)
             server.send_message(msg)
         
