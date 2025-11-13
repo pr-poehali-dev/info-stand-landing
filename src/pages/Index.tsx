@@ -16,15 +16,15 @@ const Index = () => {
   const products = [
     {
       id: 1,
-      title: 'Настенные стенды',
+      title: 'Навигационные стенды и таблички',
       description: 'Идеально для офисов и помещений. Легкая установка, современный дизайн.',
-      image: 'https://cdn.poehali.dev/files/9dc5c71d-2658-49df-8e62-62f7f91b7c9b.JPG'
+      image: 'НАСТЕННЫЙ_СТЕНД_НОВЫЙ'
     },
     {
       id: 2,
       title: 'Информационные доски',
       description: 'Многосекционные стенды с возможностью размещения документов и объявлений.',
-      image: 'https://cdn.poehali.dev/files/87fc9f43-f494-4e39-8318-ec7108eac639.png'
+      image: 'ИНФОРМАЦИЯ_1'
     },
     {
       id: 3,
@@ -36,7 +36,7 @@ const Index = () => {
       id: 4,
       title: 'Стенды из акрила',
       description: 'Прозрачные конструкции из оргстекла. Стильное решение для современных офисов.',
-      image: 'https://cdn.poehali.dev/files/1363c57e-8e91-4cb2-b572-381164ce014d.JPG'
+      image: 'АКРИЛ_НОВЫЙ'
     }
   ];
 
