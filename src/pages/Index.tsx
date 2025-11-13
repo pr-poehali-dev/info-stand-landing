@@ -14,6 +14,7 @@ const Index = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const products = [
     {
@@ -136,8 +137,52 @@ const Index = () => {
                 Заказать
               </Button>
             </nav>
+            <button
+              className="md:hidden text-secondary p-2"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Меню"
+            >
+              <Icon name={mobileMenuOpen ? "X" : "Menu"} size={28} />
+            </button>
           </div>
         </div>
+        
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-white border-t border-gray-200 shadow-lg">
+            <nav className="container mx-auto px-6 py-4 flex flex-col gap-4">
+              <a 
+                href="#products" 
+                className="text-secondary hover:text-primary transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Продукция
+              </a>
+              <a 
+                href="#advantages" 
+                className="text-secondary hover:text-primary transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Преимущества
+              </a>
+              <a 
+                href="#contacts" 
+                className="text-secondary hover:text-primary transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Контакты
+              </a>
+              <Button 
+                className="w-full"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  document.getElementById('order')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Заказать
+              </Button>
+            </nav>
+          </div>
+        )}
       </header>
 
       <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-secondary via-secondary/95 to-primary/10 text-white overflow-hidden pt-20">
