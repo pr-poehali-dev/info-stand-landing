@@ -1,0 +1,89 @@
+import Icon from '@/components/ui/icon';
+
+const Footer = () => {
+  return (
+    <footer id="contacts" className="bg-secondary text-white py-12 px-6">
+      <div className="container mx-auto">
+        <div className="text-center mb-8">
+          <h3 className="font-heading text-2xl font-bold mb-6">Контакты</h3>
+          
+          <div className="space-y-4 text-white/90">
+            <div>
+              <p className="flex items-center justify-center gap-2 mb-3">
+                <Icon name="Phone" size={20} />
+                <a href="tel:+74162227803" className="hover:text-primary transition-colors">
+                  +7 (4162) 22-78-03
+                </a>
+              </p>
+              
+              <p className="text-sm text-white/60 mb-2">Мессенджеры</p>
+              <div className="flex items-center justify-center gap-6">
+                <a href="https://wa.me/79965269483" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-primary transition-colors">
+                  <Icon name="MessageCircle" size={20} />
+                  <span>WhatsApp</span>
+                </a>
+                <a href="tg://resolve?phone=79965269483" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-primary transition-colors">
+                  <Icon name="Send" size={20} />
+                  <span>Telegram</span>
+                </a>
+                <a href="https://max.ru/u/f9LHodD0cOL6WIiGv6jxM0arnsDy0CSoHUwd9HyexaP5gg2Rhy8ghzEpxj0" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-primary transition-colors">
+                  <Icon name="MessageSquare" size={20} />
+                  <span>Max</span>
+                </a>
+              </div>
+              <p className="mt-2 text-white/80">+7 996 526-94-83</p>
+            </div>
+            
+            <p className="flex items-center justify-center gap-2">
+              <Icon name="Mail" size={20} />
+              <a href="mailto:mnogo.info@mail.ru" className="hover:text-primary transition-colors">
+                mnogo.info@mail.ru
+              </a>
+            </p>
+            
+            <p className="flex items-center justify-center gap-2 flex-wrap text-center">
+              <Icon name="MapPin" size={20} className="shrink-0" />
+              <span className="break-words">Амурская область, г. Благовещенск, ул. Забурхановская, 98, оф. 4</span>
+            </p>
+          </div>
+        </div>
+        
+        <div className="mt-8 max-w-4xl mx-auto">
+          <div className="rounded-lg overflow-hidden shadow-xl">
+            <iframe 
+              src="https://yandex.ru/map-widget/v1/?ll=127.541000%2C50.280500&z=17&l=map&mode=search&text=%D0%91%D0%BB%D0%B0%D0%B3%D0%BE%D0%B2%D0%B5%D1%89%D0%B5%D0%BD%D1%81%D0%BA%20%D0%97%D0%B0%D0%B1%D1%83%D1%80%D1%85%D0%B0%D0%BD%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%2098" 
+              width="100%" 
+              height="400" 
+              frameBorder="0"
+              title="Карта расположения офиса"
+              className="w-full"
+              allowFullScreen
+            ></iframe>
+          </div>
+          <div className="mt-4 text-center">
+            <a 
+              href="https://yandex.ru/maps/?text=Благовещенск%20Забурхановская%2098" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-white/80 hover:text-primary transition-colors"
+            >
+              <Icon name="Navigation" size={18} />
+              Проложить маршрут
+            </a>
+          </div>
+        </div>
+        
+        <div className="mt-8 pt-8 border-t border-white/20 text-white/60 text-center">
+          <p className="mb-3">&copy; 2025 многостендов.рф</p>
+          <div className="flex items-center justify-center gap-6 text-sm">
+            <a href="#" className="hover:text-white transition-colors">Пользовательское соглашение</a>
+            <span>•</span>
+            <a href="#" className="hover:text-white transition-colors">Соглашение на обработку данных</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
