@@ -120,6 +120,14 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
+      <a 
+        href="tel:+74162227803"
+        className="fixed bottom-6 right-6 z-50 bg-primary hover:bg-primary/90 text-white rounded-full p-4 shadow-2xl hover:scale-110 transition-all duration-300 flex items-center justify-center group"
+        aria-label="Позвонить"
+      >
+        <Icon name="Phone" size={28} className="group-hover:animate-pulse" />
+      </a>
+      
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
