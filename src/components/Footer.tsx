@@ -75,6 +75,9 @@ const Footer = () => {
         
         <div className="mt-8 pt-8 border-t border-white/20 text-white/60 text-center">
           <p className="mb-3">&copy; 2025 многостендов.рф | ООО "Консалт" | ИНН 2801227832 | ОГРН 1172801001174</p>
+          <p className="mb-4 text-sm text-white/70 max-w-3xl mx-auto">
+            Вся представленная на сайте информация, касающаяся стоимости товаров и услуг, носит информационный характер и ни при каких условиях не является публичной офертой, определяемой положениями Статьи 437 Гражданского кодекса Российской Федерации. Для получения подробной информации о стоимости и условиях, пожалуйста, обращайтесь к менеджерам.
+          </p>
           <div className="flex items-center justify-center gap-4 text-sm flex-wrap">
             <a href="/terms-of-service" className="hover:text-white transition-colors">Пользовательское соглашение</a>
             <span>•</span>
