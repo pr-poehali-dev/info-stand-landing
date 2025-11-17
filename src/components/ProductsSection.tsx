@@ -25,7 +25,7 @@ const ProductsSection = () => {
       id: 4,
       title: 'Стенды из акрила',
       description: 'Прозрачные конструкции из оргстекла. Стильное решение для современных офисов.',
-      image: 'https://cdn.poehali.dev/files/6eaba7d5-e8fc-4dd1-a82b-9a97b8babd88.jpg'
+      image: 'https://cdn.poehali.dev/files/3b4b63aa-8795-43b6-a56d-b8058de2ff34.JPG'
     },
     {
       id: 5,
