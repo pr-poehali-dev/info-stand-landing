@@ -51,7 +51,7 @@ const Footer = () => {
         <div className="mt-8 max-w-4xl mx-auto">
           <div className="rounded-lg overflow-hidden shadow-xl">
             <iframe 
-              src="https://yandex.ru/map-widget/v1/?ll=127.541000%2C50.280500&z=17&l=map&mode=search&text=%D0%91%D0%BB%D0%B0%D0%B3%D0%BE%D0%B2%D0%B5%D1%89%D0%B5%D0%BD%D1%81%D0%BA%20%D0%97%D0%B0%D0%B1%D1%83%D1%80%D1%85%D0%B0%D0%BD%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%2098" 
+              src="https://yandex.ru/map-widget/v1/?ll=127.541000%2C50.280500&z=17&l=map&mode=search&text=%D0%9C%D0%BD%D0%BE%D0%B3%D0%BE%D1%81%D1%82%D0%B5%D0%BD%D0%B4%D0%BE%D0%B2.%D1%80%D1%84%20%D0%91%D0%BB%D0%B0%D0%B3%D0%BE%D0%B2%D0%B5%D1%89%D0%B5%D0%BD%D1%81%D0%BA" 
               width="100%" 
               height="400" 
               frameBorder="0"
@@ -60,15 +60,24 @@ const Footer = () => {
               allowFullScreen
             ></iframe>
           </div>
-          <div className="mt-4 text-center">
+          <div className="mt-4 text-center flex items-center justify-center gap-6 flex-wrap">
             <a 
-              href="https://yandex.ru/maps/?text=Благовещенск%20Забурхановская%2098" 
+              href="https://yandex.ru/maps/org/mnogostendov_rf/54146724078/" 
               target="_blank" 
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-white/80 hover:text-primary transition-colors"
             >
               <Icon name="Navigation" size={18} />
-              Проложить маршрут
+              Яндекс.Карты
+            </a>
+            <a 
+              href="https://2gis.ru/blagoveschensk/firm/70000001080445318/tab/info" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-white/80 hover:text-primary transition-colors"
+            >
+              <Icon name="Navigation" size={18} />
+              2ГИС
             </a>
           </div>
         </div>
