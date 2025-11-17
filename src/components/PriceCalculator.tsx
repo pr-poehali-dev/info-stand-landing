@@ -219,8 +219,9 @@ const PriceCalculator = () => {
                   type="number"
                   min="10"
                   max="500"
-                  value={width}
+                  value={width || ''}
                   onChange={(e) => setWidth(Number(e.target.value))}
+                  placeholder="100"
                   className="text-lg"
                 />
               </div>
@@ -234,8 +235,9 @@ const PriceCalculator = () => {
                   type="number"
                   min="10"
                   max="500"
-                  value={height}
+                  value={height || ''}
                   onChange={(e) => setHeight(Number(e.target.value))}
+                  placeholder="100"
                   className="text-lg"
                 />
               </div>
@@ -382,7 +384,7 @@ const PriceCalculator = () => {
                 <span className="text-primary">{totalPrice.toLocaleString('ru-RU')} ₽</span>
               </div>
               <p className="text-sm text-muted-foreground mb-4 text-center">
-                Стоимость примерная без учета макета, монтажа и других доп. услуг
+                * Стоимость без учета макета, монтажа и других доп. услуг. Менеджер уточнит все требования и особенности заказа.
               </p>
               <Button 
                 className="w-full" 
