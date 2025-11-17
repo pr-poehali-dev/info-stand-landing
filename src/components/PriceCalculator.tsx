@@ -19,6 +19,8 @@ const PriceCalculator = () => {
   const [headerText, setHeaderText] = useState<string>('ИНФОРМАЦИЯ');
   const [fontSize, setFontSize] = useState<string>('medium');
   const [fontFamily, setFontFamily] = useState<string>('sans');
+  const [bgColor, setBgColor] = useState<string>('white');
+  const [headerPosition, setHeaderPosition] = useState<string>('top');
 
   const pvcPrices: Record<string, number> = {
     '3mm': 700,
@@ -82,6 +84,21 @@ const PriceCalculator = () => {
     mono: 'Courier New, monospace'
   };
 
+  const bgColorMap: Record<string, string> = {
+    white: 'linear-gradient(to bottom right, #ffffff, #f3f4f6)',
+    blue: 'linear-gradient(to bottom right, #dbeafe, #93c5fd)',
+    green: 'linear-gradient(to bottom right, #d1fae5, #6ee7b7)',
+    yellow: 'linear-gradient(to bottom right, #fef3c7, #fcd34d)',
+    red: 'linear-gradient(to bottom right, #fee2e2, #fca5a5)',
+    gray: 'linear-gradient(to bottom right, #e5e7eb, #9ca3af)'
+  };
+
+  const headerPositionMap: Record<string, string> = {
+    top: 'flex-start',
+    center: 'center',
+    bottom: 'flex-end'
+  };
+
   const renderPreview = () => {
     const maxWidth = 400;
     const maxHeight = 500;
@@ -113,23 +130,30 @@ const PriceCalculator = () => {
 
     return (
       <div 
-        className="border-4 border-primary/20 rounded-lg bg-gradient-to-br from-white to-gray-50 shadow-lg relative overflow-hidden"
+        className="border-4 border-primary/20 rounded-lg shadow-lg relative overflow-hidden"
         style={{ 
           width: `${previewWidth}px`, 
           height: `${previewHeight}px`,
-          margin: '0 auto'
+          margin: '0 auto',
+          background: bgColorMap[bgColor]
         }}
       >
         <div 
-          className="absolute top-0 left-0 right-0 flex items-center justify-center text-secondary font-bold"
+          className="absolute inset-0 flex items-center justify-center text-secondary font-bold px-4"
           style={{ 
-            fontSize: `${previewHeight * fontSizeMap[fontSize]}px`,
-            fontFamily: fontFamilyMap[fontFamily],
-            padding: `${previewHeight * 0.05}px`,
-            textAlign: 'center'
+            alignItems: headerPositionMap[headerPosition]
           }}
         >
-          {headerText || 'ИНФОРМАЦИЯ'}
+          <div
+            style={{ 
+              fontSize: `${previewHeight * fontSizeMap[fontSize]}px`,
+              fontFamily: fontFamilyMap[fontFamily],
+              padding: `${previewHeight * 0.05}px`,
+              textAlign: 'center'
+            }}
+          >
+            {headerText || 'ИНФОРМАЦИЯ'}
+          </div>
         </div>
 
         <div className="absolute bottom-0 left-0 right-0 p-4 flex flex-wrap justify-center items-end gap-2">
@@ -305,6 +329,43 @@ const PriceCalculator = () => {
                     <SelectItem value="sans">Без засечек</SelectItem>
                     <SelectItem value="serif">С засечками</SelectItem>
                     <SelectItem value="mono">Моноширинный</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="bgColor" className="text-base">
+                  Цвет фона
+                </Label>
+                <Select value={bgColor} onValueChange={setBgColor}>
+                  <SelectTrigger id="bgColor">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="white">Белый</SelectItem>
+                    <SelectItem value="blue">Синий</SelectItem>
+                    <SelectItem value="green">Зеленый</SelectItem>
+                    <SelectItem value="yellow">Желтый</SelectItem>
+                    <SelectItem value="red">Красный</SelectItem>
+                    <SelectItem value="gray">Серый</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="headerPosition" className="text-base">
+                  Позиция заголовка
+                </Label>
+                <Select value={headerPosition} onValueChange={setHeaderPosition}>
+                  <SelectTrigger id="headerPosition">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="top">Вверху</SelectItem>
+                    <SelectItem value="center">По центру</SelectItem>
+                    <SelectItem value="bottom">Внизу</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
