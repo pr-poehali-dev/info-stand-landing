@@ -17,10 +17,8 @@ const PriceCalculator = () => {
     a2: 0
   });
   const [headerText, setHeaderText] = useState<string>('ИНФОРМАЦИЯ');
-  const [fontSize, setFontSize] = useState<string>('medium');
   const [fontFamily, setFontFamily] = useState<string>('sans');
   const [bgColor, setBgColor] = useState<string>('white');
-  const [headerPosition, setHeaderPosition] = useState<string>('top');
 
   const pvcPrices: Record<string, number> = {
     '3mm': 700,
@@ -72,11 +70,7 @@ const PriceCalculator = () => {
     a2: { width: 42, height: 59.4 }
   };
 
-  const fontSizeMap: Record<string, number> = {
-    small: 0.08,
-    medium: 0.12,
-    large: 0.16
-  };
+
 
   const fontFamilyMap: Record<string, string> = {
     sans: 'Arial, sans-serif',
@@ -93,11 +87,7 @@ const PriceCalculator = () => {
     gray: 'linear-gradient(to bottom right, #e5e7eb, #9ca3af)'
   };
 
-  const headerPositionMap: Record<string, string> = {
-    top: 'flex-start',
-    center: 'center',
-    bottom: 'flex-end'
-  };
+
 
   const renderPreview = () => {
     const maxWidth = 400;
@@ -128,9 +118,11 @@ const PriceCalculator = () => {
     const columns = Math.ceil(Math.sqrt(allPockets.length));
     const spacing = 5;
 
+    const baseFontSize = Math.min(previewWidth / 10, previewHeight / 8);
+
     return (
       <div 
-        className="border-4 border-primary/20 rounded-lg shadow-lg relative overflow-hidden"
+        className="border-4 border-primary/20 shadow-lg relative overflow-hidden"
         style={{ 
           width: `${previewWidth}px`, 
           height: `${previewHeight}px`,
@@ -139,14 +131,11 @@ const PriceCalculator = () => {
         }}
       >
         <div 
-          className="absolute inset-0 flex items-center justify-center text-secondary font-bold px-4"
-          style={{ 
-            alignItems: headerPositionMap[headerPosition]
-          }}
+          className="absolute top-0 left-0 right-0 flex items-center justify-center text-secondary font-bold px-4"
         >
           <div
             style={{ 
-              fontSize: `${previewHeight * fontSizeMap[fontSize]}px`,
+              fontSize: `${baseFontSize}px`,
               fontFamily: fontFamilyMap[fontFamily],
               padding: `${previewHeight * 0.05}px`,
               textAlign: 'center'
@@ -164,7 +153,7 @@ const PriceCalculator = () => {
             return (
               <div
                 key={index}
-                className="border-2 border-primary/40 bg-white/60 rounded flex items-center justify-center text-xs font-medium text-muted-foreground"
+                className="border-2 border-primary/40 bg-white/60 flex items-center justify-center text-xs font-medium text-muted-foreground"
                 style={{
                   width: `${pocketWidth}px`,
                   height: `${pocketHeight}px`,
@@ -178,7 +167,7 @@ const PriceCalculator = () => {
           })}
         </div>
 
-        <div className="absolute top-2 right-2 bg-white/90 px-2 py-1 rounded text-xs font-medium text-muted-foreground">
+        <div className="absolute top-2 right-2 bg-white/90 px-2 py-1 text-xs font-medium text-muted-foreground">
           {width}×{height} см
         </div>
       </div>
@@ -302,22 +291,6 @@ const PriceCalculator = () => {
 
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="fontSize" className="text-base">
-                  Размер шрифта
-                </Label>
-                <Select value={fontSize} onValueChange={setFontSize}>
-                  <SelectTrigger id="fontSize">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="small">Маленький</SelectItem>
-                    <SelectItem value="medium">Средний</SelectItem>
-                    <SelectItem value="large">Большой</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="space-y-2">
                 <Label htmlFor="fontFamily" className="text-base">
                   Шрифт
                 </Label>
@@ -332,9 +305,7 @@ const PriceCalculator = () => {
                   </SelectContent>
                 </Select>
               </div>
-            </div>
 
-            <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="bgColor" className="text-base">
                   Цвет фона
@@ -350,22 +321,6 @@ const PriceCalculator = () => {
                     <SelectItem value="yellow">Желтый</SelectItem>
                     <SelectItem value="red">Красный</SelectItem>
                     <SelectItem value="gray">Серый</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="headerPosition" className="text-base">
-                  Позиция заголовка
-                </Label>
-                <Select value={headerPosition} onValueChange={setHeaderPosition}>
-                  <SelectTrigger id="headerPosition">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="top">Вверху</SelectItem>
-                    <SelectItem value="center">По центру</SelectItem>
-                    <SelectItem value="bottom">Внизу</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
