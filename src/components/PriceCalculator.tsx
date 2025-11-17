@@ -16,6 +16,9 @@ const PriceCalculator = () => {
     a3: 0,
     a2: 0
   });
+  const [headerText, setHeaderText] = useState<string>('ИНФОРМАЦИЯ');
+  const [fontSize, setFontSize] = useState<string>('medium');
+  const [fontFamily, setFontFamily] = useState<string>('sans');
 
   const pvcPrices: Record<string, number> = {
     '3mm': 700,
@@ -60,13 +63,111 @@ const PriceCalculator = () => {
     }));
   };
 
+  const pocketSizes: Record<string, { width: number; height: number }> = {
+    a5: { width: 14.8, height: 21 },
+    a4: { width: 21, height: 29.7 },
+    a3: { width: 29.7, height: 42 },
+    a2: { width: 42, height: 59.4 }
+  };
+
+  const fontSizeMap: Record<string, number> = {
+    small: 0.08,
+    medium: 0.12,
+    large: 0.16
+  };
+
+  const fontFamilyMap: Record<string, string> = {
+    sans: 'Arial, sans-serif',
+    serif: 'Georgia, serif',
+    mono: 'Courier New, monospace'
+  };
+
+  const renderPreview = () => {
+    const maxWidth = 400;
+    const maxHeight = 500;
+    const aspectRatio = width / height;
+    
+    let previewWidth = maxWidth;
+    let previewHeight = maxWidth / aspectRatio;
+    
+    if (previewHeight > maxHeight) {
+      previewHeight = maxHeight;
+      previewWidth = maxHeight * aspectRatio;
+    }
+
+    const scale = previewWidth / width;
+    const allPockets: Array<{ size: string; width: number; height: number }> = [];
+    
+    Object.entries(pocketCounts).forEach(([size, count]) => {
+      for (let i = 0; i < count; i++) {
+        allPockets.push({
+          size,
+          width: pocketSizes[size].width,
+          height: pocketSizes[size].height
+        });
+      }
+    });
+
+    const columns = Math.ceil(Math.sqrt(allPockets.length));
+    const spacing = 5;
+
+    return (
+      <div 
+        className="border-4 border-primary/20 rounded-lg bg-gradient-to-br from-white to-gray-50 shadow-lg relative overflow-hidden"
+        style={{ 
+          width: `${previewWidth}px`, 
+          height: `${previewHeight}px`,
+          margin: '0 auto'
+        }}
+      >
+        <div 
+          className="absolute top-0 left-0 right-0 flex items-center justify-center text-secondary font-bold"
+          style={{ 
+            fontSize: `${previewHeight * fontSizeMap[fontSize]}px`,
+            fontFamily: fontFamilyMap[fontFamily],
+            padding: `${previewHeight * 0.05}px`,
+            textAlign: 'center'
+          }}
+        >
+          {headerText || 'ИНФОРМАЦИЯ'}
+        </div>
+
+        <div className="absolute bottom-0 left-0 right-0 p-4 flex flex-wrap justify-center items-end gap-2">
+          {allPockets.map((pocket, index) => {
+            const pocketWidth = pocket.width * scale;
+            const pocketHeight = pocket.height * scale;
+            
+            return (
+              <div
+                key={index}
+                className="border-2 border-primary/40 bg-white/60 rounded flex items-center justify-center text-xs font-medium text-muted-foreground"
+                style={{
+                  width: `${pocketWidth}px`,
+                  height: `${pocketHeight}px`,
+                  minWidth: '30px',
+                  minHeight: '40px'
+                }}
+              >
+                {pocket.size.toUpperCase()}
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="absolute top-2 right-2 bg-white/90 px-2 py-1 rounded text-xs font-medium text-muted-foreground">
+          {width}×{height} см
+        </div>
+      </div>
+    );
+  };
+
   const handleSendCalculation = () => {
     const pocketsText = Object.entries(pocketCounts)
       .filter(([_, count]) => count > 0)
       .map(([size, count]) => `${size.toUpperCase()}: ${count} шт`)
       .join(', ');
 
-    const message = `Расчет стоимости стенда:\n\nРазмер: ${width}x${height} см\nПВХ: ${pvcThickness}\nИзображение: ${printingNames[printing]}${pocketsText ? `\nКарманы: ${pocketsText}` : ''}\n\nИтого: ${totalPrice.toLocaleString('ru-RU')} ₽`;
+    const message = `Расчет стоимости стенда:\n\nРазмер: ${width}x${height} см\nПВХ: ${pvcThickness}\nИзображение: ${printingNames[printing]}\nТекст заголовка: "${headerText}"${pocketsText ? `\nКарманы: ${pocketsText}` : ''}\n\nИтого: ${totalPrice.toLocaleString('ru-RU')} ₽`;
     
     const orderSection = document.getElementById('order');
     if (orderSection) {
@@ -81,7 +182,7 @@ const PriceCalculator = () => {
 
   return (
     <section id="calculator" className="py-20 px-6 bg-muted/30">
-      <div className="container mx-auto max-w-4xl">
+      <div className="container mx-auto max-w-7xl">
         <h2 className="font-heading text-4xl md:text-5xl font-bold text-center mb-4 text-secondary">
           Калькулятор стоимости
         </h2>
@@ -89,11 +190,12 @@ const PriceCalculator = () => {
           Рассчитайте примерную стоимость без учета макета и монтажа
         </p>
 
-        <Card className="shadow-xl">
-          <CardHeader>
-            <CardTitle className="text-2xl text-secondary">Параметры стенда</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-6">
+        <div className="grid lg:grid-cols-2 gap-8">
+          <Card className="shadow-xl">
+            <CardHeader>
+              <CardTitle className="text-2xl text-secondary">Параметры стенда</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <Label htmlFor="width" className="text-base">
@@ -158,6 +260,54 @@ const PriceCalculator = () => {
                   <SelectItem value="oracal">Аппликация Оракал 641</SelectItem>
                 </SelectContent>
               </Select>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="headerText" className="text-base">
+                Текст заголовка
+              </Label>
+              <Input
+                id="headerText"
+                type="text"
+                value={headerText}
+                onChange={(e) => setHeaderText(e.target.value)}
+                placeholder="ИНФОРМАЦИЯ"
+                className="text-lg"
+              />
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="fontSize" className="text-base">
+                  Размер шрифта
+                </Label>
+                <Select value={fontSize} onValueChange={setFontSize}>
+                  <SelectTrigger id="fontSize">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="small">Маленький</SelectItem>
+                    <SelectItem value="medium">Средний</SelectItem>
+                    <SelectItem value="large">Большой</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="fontFamily" className="text-base">
+                  Шрифт
+                </Label>
+                <Select value={fontFamily} onValueChange={setFontFamily}>
+                  <SelectTrigger id="fontFamily">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="sans">Без засечек</SelectItem>
+                    <SelectItem value="serif">С засечками</SelectItem>
+                    <SelectItem value="mono">Моноширинный</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
             </div>
 
             <div className="space-y-3">
@@ -228,6 +378,16 @@ const PriceCalculator = () => {
             </div>
           </CardContent>
         </Card>
+
+        <Card className="shadow-xl">
+          <CardHeader>
+            <CardTitle className="text-2xl text-secondary">Визуализация</CardTitle>
+          </CardHeader>
+          <CardContent className="flex items-center justify-center min-h-[500px]">
+            {renderPreview()}
+          </CardContent>
+        </Card>
+      </div>
       </div>
     </section>
   );
