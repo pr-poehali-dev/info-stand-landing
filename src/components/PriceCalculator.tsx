@@ -101,10 +101,10 @@ const PriceCalculator = () => {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="3mm">3 мм (700 ₽/м²)</SelectItem>
-                  <SelectItem value="5mm">5 мм (1150 ₽/м²)</SelectItem>
-                  <SelectItem value="8mm">8 мм (1190 ₽/м²)</SelectItem>
-                  <SelectItem value="10mm">10 мм (1450 ₽/м²)</SelectItem>
+                  <SelectItem value="3mm">3 мм</SelectItem>
+                  <SelectItem value="5mm">5 мм</SelectItem>
+                  <SelectItem value="8mm">8 мм</SelectItem>
+                  <SelectItem value="10mm">10 мм</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -118,10 +118,10 @@ const PriceCalculator = () => {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="interior">Печать интерьерная без ламинации (1490 ₽/м²)</SelectItem>
-                  <SelectItem value="interiorLaminated">Печать интерьерная с ламинацией (1580 ₽/м²)</SelectItem>
-                  <SelectItem value="uvVinyl">УФ печать на виниловой пленке (1810 ₽/м²)</SelectItem>
-                  <SelectItem value="oracal">Аппликация Оракал 641 (3160 ₽/м²)</SelectItem>
+                  <SelectItem value="interior">Печать интерьерная без ламинации</SelectItem>
+                  <SelectItem value="interiorLaminated">Печать интерьерная с ламинацией</SelectItem>
+                  <SelectItem value="uvVinyl">УФ печать на виниловой пленке</SelectItem>
+                  <SelectItem value="oracal">Аппликация Оракал 641</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -136,7 +136,7 @@ const PriceCalculator = () => {
                     onCheckedChange={() => togglePocket('a5')}
                   />
                   <label htmlFor="a5" className="text-sm cursor-pointer">
-                    А5 (+150 ₽)
+                    А5
                   </label>
                 </div>
                 <div className="flex items-center space-x-2">
@@ -146,7 +146,7 @@ const PriceCalculator = () => {
                     onCheckedChange={() => togglePocket('a4')}
                   />
                   <label htmlFor="a4" className="text-sm cursor-pointer">
-                    А4 (+250 ₽)
+                    А4
                   </label>
                 </div>
                 <div className="flex items-center space-x-2">
@@ -156,7 +156,7 @@ const PriceCalculator = () => {
                     onCheckedChange={() => togglePocket('a3')}
                   />
                   <label htmlFor="a3" className="text-sm cursor-pointer">
-                    А3 (+350 ₽)
+                    А3
                   </label>
                 </div>
                 <div className="flex items-center space-x-2">
@@ -166,7 +166,7 @@ const PriceCalculator = () => {
                     onCheckedChange={() => togglePocket('a2')}
                   />
                   <label htmlFor="a2" className="text-sm cursor-pointer">
-                    А2 (+650 ₽)
+                    А2
                   </label>
                 </div>
               </div>
