@@ -6,8 +6,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Button } from '@/components/ui/button';
 
 const PriceCalculator = () => {
-  const [width, setWidth] = useState<number>(100);
-  const [height, setHeight] = useState<number>(100);
+  const [width, setWidth] = useState<number>(0);
+  const [height, setHeight] = useState<number>(0);
   const [pvcThickness, setPvcThickness] = useState<string>('3mm');
   const [printing, setPrinting] = useState<string>('interior');
   const [pocketCounts, setPocketCounts] = useState<Record<string, number>>({
@@ -380,7 +380,7 @@ const PriceCalculator = () => {
 
             <div className="mt-8 pt-6 border-t">
               <div className="flex justify-between items-center text-3xl font-bold mb-4">
-                <span className="text-secondary">Итого:</span>
+                <span className="text-secondary">Итого*:</span>
                 <span className="text-primary">{totalPrice.toLocaleString('ru-RU')} ₽</span>
               </div>
               <p className="text-sm text-muted-foreground mb-4 text-center">
