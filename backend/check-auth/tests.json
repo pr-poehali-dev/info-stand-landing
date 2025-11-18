@@ -1,0 +1,25 @@
+{
+  "tests": [
+    {
+      "name": "Handle OPTIONS request",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "Reject GET request",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 405
+    },
+    {
+      "name": "Reject invalid password",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "password": "wrongpassword"
+      },
+      "expectedStatus": 401
+    }
+  ]
+}
