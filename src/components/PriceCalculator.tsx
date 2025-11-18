@@ -19,7 +19,6 @@ const PriceCalculator = () => {
   const [headerText, setHeaderText] = useState<string>('ИНФОРМАЦИЯ');
   const [fontFamily, setFontFamily] = useState<string>('sans');
   const [bgColor, setBgColor] = useState<string>('white');
-  const [cms, setCms] = useState<string>('');
 
   const pvcPrices: Record<string, number> = {
     '3mm': 700,
@@ -290,20 +289,6 @@ const PriceCalculator = () => {
                 value={headerText}
                 onChange={(e) => setHeaderText(e.target.value)}
                 placeholder="ИНФОРМАЦИЯ"
-                className="text-lg"
-              />
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="cms" className="text-base">
-                CMS (система крепления)
-              </Label>
-              <Input
-                id="cms"
-                type="text"
-                value={cms}
-                onChange={(e) => setCms(e.target.value)}
-                placeholder="Например: настенное крепление, подвесная система"
                 className="text-lg"
               />
             </div>
