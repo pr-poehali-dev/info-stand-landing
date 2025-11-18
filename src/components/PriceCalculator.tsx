@@ -182,13 +182,13 @@ const PriceCalculator = () => {
 
     const message = `Расчет стоимости стенда:\n\nРазмер: ${width}x${height} см\nПВХ: ${pvcThickness}\nИзображение: ${printingNames[printing]}\nТекст заголовка: "${headerText}"${pocketsText ? `\nКарманы: ${pocketsText}` : ''}\n\nИтого: ${totalPrice.toLocaleString('ru-RU')} ₽`;
     
+    // Отправляем событие для обновления формы
+    window.dispatchEvent(new CustomEvent('calculatorMessage', { 
+      detail: { message } 
+    }));
+    
     const orderSection = document.getElementById('order');
     if (orderSection) {
-      const textarea = orderSection.querySelector('textarea') as HTMLTextAreaElement;
-      if (textarea) {
-        textarea.value = message;
-        textarea.focus();
-      }
       orderSection.scrollIntoView({ behavior: 'smooth' });
     }
   };

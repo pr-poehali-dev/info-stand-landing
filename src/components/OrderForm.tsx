@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -14,6 +14,17 @@ const OrderForm = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  useEffect(() => {
+    const handleCalculatorMessage = (event: CustomEvent) => {
+      setFormData(prev => ({ ...prev, message: event.detail.message }));
+    };
+
+    window.addEventListener('calculatorMessage' as any, handleCalculatorMessage);
+    return () => {
+      window.removeEventListener('calculatorMessage' as any, handleCalculatorMessage);
+    };
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
