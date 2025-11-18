@@ -4,6 +4,7 @@ import os
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from typing import Dict, Any
+import psycopg2
 
 def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     '''
@@ -74,6 +75,25 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
                 'body': json.dumps({'error': 'SMTP credentials not configured'}),
                 'isBase64Encoded': False
             }
+        
+        product_name = None
+        if subject and 'Запрос цены:' in subject:
+            product_name = subject.replace('Запрос цены:', '').strip()
+        
+        database_url = os.environ.get('DATABASE_URL')
+        if database_url and product_name:
+            try:
+                conn = psycopg2.connect(database_url)
+                cur = conn.cursor()
+                cur.execute(
+                    "INSERT INTO product_requests (product_name, customer_name, customer_email, customer_phone, message) VALUES (%s, %s, %s, %s, %s)",
+                    (product_name, name, email, phone, message or '')
+                )
+                conn.commit()
+                cur.close()
+                conn.close()
+            except Exception:
+                pass
         
         msg = MIMEMultipart()
         msg['From'] = smtp_user
