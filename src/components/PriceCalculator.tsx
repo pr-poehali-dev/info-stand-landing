@@ -292,7 +292,7 @@ const PriceCalculator = () => {
               />
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="fontFamily" className="text-base">
                   Шрифт
@@ -331,7 +331,7 @@ const PriceCalculator = () => {
 
             <div className="space-y-3">
               <Label className="text-base">Карманы (опционально)</Label>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="a5" className="text-sm">А5</Label>
                   <Input
@@ -380,15 +380,15 @@ const PriceCalculator = () => {
             </div>
 
             <div className="mt-8 pt-6 border-t">
-              <div className="flex justify-between items-center text-3xl font-bold mb-4">
+              <div className="flex flex-col sm:flex-row justify-between items-center gap-2 text-2xl sm:text-3xl font-bold mb-4">
                 <span className="text-secondary">Итого:</span>
-                <span className="text-primary">{totalPrice.toLocaleString('ru-RU')} ₽<sup className="text-lg">*</sup></span>
+                <span className="text-primary">{totalPrice.toLocaleString('ru-RU')} ₽<sup className="text-base sm:text-lg">*</sup></span>
               </div>
-              <p className="text-sm text-muted-foreground mb-4 text-center">
+              <p className="text-xs sm:text-sm text-muted-foreground mb-4 text-center">
                 * Стоимость без учета макета, монтажа и других доп. услуг. Менеджер уточнит все требования и особенности заказа.
               </p>
               <Button 
-                className="w-full" 
+                className="w-full text-sm sm:text-base" 
                 size="lg"
                 onClick={handleSendCalculation}
               >
