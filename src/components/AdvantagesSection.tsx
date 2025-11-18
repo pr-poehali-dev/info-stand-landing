@@ -15,7 +15,7 @@ const AdvantagesSection = () => {
     {
       icon: 'Clock',
       title: 'Быстрое производство',
-      description: 'Изготовление от 3 дней без потери качества'
+      description: 'Изготовление от 2 дней без потери качества'
     },
     {
       icon: 'Shield',
