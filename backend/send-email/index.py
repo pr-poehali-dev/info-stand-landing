@@ -45,15 +45,16 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
         email = body_data.get('email', '')
         phone = body_data.get('phone', '')
         message = body_data.get('message', '')
+        subject = body_data.get('subject', '')
         
-        if not all([name, email, phone, message]):
+        if not all([name, email, phone]):
             return {
                 'statusCode': 400,
                 'headers': {
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin': '*'
                 },
-                'body': json.dumps({'error': 'All fields are required'}),
+                'body': json.dumps({'error': 'Name, email, and phone are required'}),
                 'isBase64Encoded': False
             }
         
@@ -77,7 +78,11 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
         msg = MIMEMultipart()
         msg['From'] = smtp_user
         msg['To'] = email_to
-        msg['Subject'] = f'Новая заявка с сайта многостендов.рф от {name}'
+        
+        if subject:
+            msg['Subject'] = subject
+        else:
+            msg['Subject'] = f'Новая заявка с сайта многостендов.рф от {name}'
         
         body_text = f"""
 Новая заявка с сайта многостендов.рф
@@ -87,7 +92,7 @@ Email: {email}
 Телефон: {phone}
 
 Сообщение:
-{message}
+{message if message else '(нет комментария)'}
 """
         
         msg.attach(MIMEText(body_text, 'plain', 'utf-8'))

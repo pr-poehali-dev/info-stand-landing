@@ -1,7 +1,11 @@
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import ProductOrderModal from './ProductOrderModal';
 
 const ProductsSection = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState('');
   const products = [
     {
       id: 1,
@@ -86,7 +90,10 @@ const ProductsSection = () => {
                 </p>
                 <Button 
                   className="w-full mt-auto"
-                  onClick={() => document.getElementById('order')?.scrollIntoView({ behavior: 'smooth' })}
+                  onClick={() => {
+                    setSelectedProduct(product.title);
+                    setIsModalOpen(true);
+                  }}
                 >
                   Узнать цену
                 </Button>
@@ -95,6 +102,12 @@ const ProductsSection = () => {
           ))}
         </div>
       </div>
+
+      <ProductOrderModal 
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        productName={selectedProduct}
+      />
     </section>
   );
 };
