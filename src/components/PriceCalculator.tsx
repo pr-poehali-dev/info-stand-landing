@@ -48,14 +48,14 @@ const PriceCalculator = () => {
     oracal: 'Аппликация Оракал 641'
   };
 
-  const area = (width * height) / 10000;
+  const area = (width && height) ? (width * height) / 10000 : 0;
   const pvcCost = area * pvcPrices[pvcThickness];
   const printingCost = area * printingPrices[printing];
   const pocketsCost = Object.entries(pocketCounts).reduce(
     (sum, [size, count]) => sum + pocketPrices[size] * count, 0
   );
   const calculatedPrice = Math.round(pvcCost + printingCost + pocketsCost);
-  const totalPrice = Math.max(1500, calculatedPrice);
+  const totalPrice = (width && height) ? Math.max(1500, calculatedPrice) : 1500;
 
   const updatePocketCount = (size: string, value: number) => {
     setPocketCounts(prev => ({
