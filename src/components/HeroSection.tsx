@@ -7,7 +7,7 @@ const HeroSection = () => {
       
       <div className="container mx-auto px-6 relative z-10 text-center animate-fade-in">
         <h1 className="font-heading text-5xl md:text-7xl font-bold mb-6 tracking-tight">
-          Информационные стенды
+          Инфор&shy;мацион&shy;ные стенды
           <span className="block text-primary mt-2">под ваш проект</span>
         </h1>
         <p className="text-xl md:text-2xl mb-12 text-white/90 max-w-2xl mx-auto font-light">
