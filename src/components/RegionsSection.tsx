@@ -86,7 +86,7 @@ const RegionsSection = () => {
             <div className="mt-6 pt-6 border-t border-border">
               <p className="text-sm text-muted-foreground flex items-center gap-2">
                 <Icon name="Truck" size={16} className="text-primary" />
-                <span>Организуем доставку в любой регион ДФО</span>
+                <span>Организуем доставку в любой регион ДФО и России</span>
               </p>
             </div>
           </div>
