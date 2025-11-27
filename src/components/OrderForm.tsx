@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { Checkbox } from '@/components/ui/checkbox';
 import Icon from '@/components/ui/icon';
 
 const OrderForm = () => {
@@ -14,6 +15,7 @@ const OrderForm = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [consentChecked, setConsentChecked] = useState(false);
 
   useEffect(() => {
     const handleCalculatorMessage = (event: CustomEvent) => {
@@ -135,11 +137,23 @@ const OrderForm = () => {
                 </div>
               )}
               
+              <div className="flex items-start gap-3 p-4 bg-muted/30 rounded-lg">
+                <Checkbox 
+                  id="consent" 
+                  checked={consentChecked}
+                  onCheckedChange={(checked) => setConsentChecked(checked === true)}
+                  className="mt-1"
+                />
+                <label htmlFor="consent" className="text-sm text-muted-foreground leading-relaxed cursor-pointer">
+                  Нажимая кнопку «Отправить», я даю свое согласие на обработку моих персональных данных, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ «О персональных данных», на условиях и для целей, определенных в Согласии на обработку персональных данных.
+                </label>
+              </div>
+              
               <Button 
                 type="submit" 
                 size="lg" 
                 className="w-full h-12 bg-primary hover:bg-primary/90 text-white text-lg"
-                disabled={isSubmitting}
+                disabled={isSubmitting || !consentChecked}
               >
                 {isSubmitting ? 'Отправка...' : 'Отправить заявку'}
               </Button>

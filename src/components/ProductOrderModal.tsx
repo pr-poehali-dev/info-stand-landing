@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { Checkbox } from '@/components/ui/checkbox';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import Icon from '@/components/ui/icon';
 
@@ -20,6 +21,7 @@ const ProductOrderModal = ({ isOpen, onClose, productName }: ProductOrderModalPr
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [consentChecked, setConsentChecked] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -134,10 +136,22 @@ const ProductOrderModal = ({ isOpen, onClose, productName }: ProductOrderModalPr
             </div>
           )}
           
+          <div className="flex items-start gap-2 p-3 bg-muted/30 rounded-lg">
+            <Checkbox 
+              id="modal-consent" 
+              checked={consentChecked}
+              onCheckedChange={(checked) => setConsentChecked(checked === true)}
+              className="mt-0.5"
+            />
+            <label htmlFor="modal-consent" className="text-xs text-muted-foreground leading-snug cursor-pointer">
+              Нажимая кнопку «Отправить», я даю свое согласие на обработку моих персональных данных, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ «О персональных данных», на условиях и для целей, определенных в Согласии на обработку персональных данных.
+            </label>
+          </div>
+          
           <Button 
             type="submit" 
             className="w-full h-10 bg-primary hover:bg-primary/90 text-white"
-            disabled={isSubmitting}
+            disabled={isSubmitting || !consentChecked}
           >
             {isSubmitting ? 'Отправка...' : 'Отправить заявку'}
           </Button>
